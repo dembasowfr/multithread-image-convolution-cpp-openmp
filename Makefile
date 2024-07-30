@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3fd407e (Run the project on windows Powershell)
 CC=g++ 
 CFLAGS= -std=gnu++11 -O2 -Iinclude -I/usr/include/python3.10
 LDFLAGS= -lpython3.10

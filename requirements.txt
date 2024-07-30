@@ -1,4 +1,8 @@
 numpy>=1.23
+<<<<<<< HEAD
 matplotlib>=3.4.0
 python>=3.10
 pip>=21.0
+=======
+matplotlib>=3.4.0
+>>>>>>> 3fd407e (Run the project on windows Powershell)
