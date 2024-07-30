@@ -83,13 +83,21 @@ int main(int argc, char *argv[]) {
   }
 
   int width, num_images, height, depth;
+
+  // As requested in the assignment, we will use a stride of 1
+  // As an option feature, we will also use padding of 1
   int stride = 1, padding = 1; 
+
+
   ifile >> num_images >> width >> height >> depth;
+  
   ofile << num_images << " "; 
   cerr << num_images << " "; 
   
   Convolution clayer(width, height, depth, w_size, stride, padding, filters.size()); 
+
   double ***input;
+
   input = get_tensor(width, height, depth); 
 
   #pragma omp parallel for // Parallelize the loop
