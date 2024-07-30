@@ -3,21 +3,27 @@
 ![Overview Input Output Image](https://raw.githubusercontent.com/dembasowfr/multithread-convolution-openmp/master/output/result1.png?token=GHSAT0AAAAAACTOIUANY4C2JWT3REKKHPICZVJOXRA)
 
 ## Introduction
+This project is a simple multi-thread convolutional filter for images. It reads a batch of images from a file, applies a filter to each image, and writes the output to a different file. The filter is defined in a text file. The program uses OpenMP to parallelize the convolutional layer. Here we use a 5x5 filter with 1/273 normalization factor. The filter is applied to each color channel of the image. 5 threads are used to parallelize the convolutional layer and each thread processes a different color channel of the image.  The stride(which is 1) and zero-padding of the filter can be set in the convolutional layer. The output layer dimensions are calculated automatically. 
 
-* Images are stored in folder images/. All images should be of the same size.
+Note: The program can only run on a linux machine, as it uses OpenMP for parallelization and windows does not support the compiler.
 
-* Python Imaging Library (PIL) was used to convert images into RGB matrices and to convert filtered matrices back to images. PIL was preferred over other C++ libraries due to ease of use.
+* Images are stored in folder input/grey. All images should be of the same size (In our case 300x300) and in the same folder for the program to work.
+
+* Python Imaging Library (PIL) was used to convert images into RGB matrices and to convert filtered matrices back to images. 
+PIL was preferred over other C++ libraries due to ease of use.
 
 ## Code structure
-  * filter.hpp defines a 3-D convolutinal kernel class with a bias term. It contains some helper functions to allocate memory to tensors and to normalize them.
-  * Convolution.hpp defines a convolutional layer. One can set the stride and zero-padding of the filter in this. Also, dimensions of the output layer are calculated automatically.
+  * Filter.hpp: 
+  Defines a 3-D convolutinal kernel class with a bias term. It contains some helper functions to allocate memory to tensors and to normalize them.
+  * Convolution.hpp: 
+  Defines a convolutional layer. One can set the stride and zero-padding of the filter in this. Also, dimensions of the output layer are calculated automatically.
   * conv2d method takes as argument a 3-D data volume and a list of filters (one filter generates one activation map). 
   
   For example, applying a 5 x 5 x 3 filter on a 300 x 300 x 3 image (with 1 zero padding and 1 stride) will generate an 2-D output layer of 300 x 300. 
   
   * List of filters would make the output layer. Shape of output layer as well as the data block is returned by the function conv2d.
 
-  * main.cpp runs some example filters on a batch of 3 images. It generates 3 filters, one as an edge detector for each color channel (see push\_filter). Then defines
+  * Main.cpp runs some example filters on a batch of 3 images. It generates 3 filters, one as an edge detector for each color channel (see push\_filter). Then defines
     a convolution layer with given params and applies the layer to each of the images. It then writes the output to a different file.
   *Inside helpers directory, we have make\_mats.py and load\_img.py that are used to generate images\-matrices and vice versa.
 
@@ -38,7 +44,7 @@ sudo apt install python3-pip
 pip install -r requirements.txt
 ```
 
-* Compile using make. Build file for convolutional filter demo program is 'main'. See run.sh for a complete run
+* Compile using make. Build file for convolutional filter demo program is 'main'. 
 
 * The ```run.sh``` file allows us to run both ```makefile``` and the rest of python commands that's going to execute the overall project.
 To run the project:
