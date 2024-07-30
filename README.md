@@ -1,5 +1,9 @@
 # Convolutional filter(s) for images
 
+![Overview Input Output Image](https://raw.githubusercontent.com/dembasowfr/multithread-convolution-openmp/master/output/result1.png?token=GHSAT0AAAAAACTOIUANY4C2JWT3REKKHPICZVJOXRA)
+
+## Introduction
+
 * Images are stored in folder images/. All images should be of the same size.
 
 * Python Imaging Library (PIL) was used to convert images into RGB matrices and to convert filtered matrices back to images. PIL was preferred over other C++ libraries due to ease of use.
@@ -80,3 +84,11 @@ The filter is defined in filter.txt, which is the given kernel with 1/273 normal
 The output images are stored in out_mats inside output directory.
 
 The output images are stored in out_mats inside output directory.
+
+Check out a couple of images with the filters applied:
+
+![Output Image 1](https://raw.githubusercontent.com/dembasowfr/multithread-convolution-openmp/master/output/result2.png?token=GHSAT0AAAAAACTOIUAN43TXBBX7WU536R72ZVJOYQQ)
+
+![Output Image 2](https://raw.githubusercontent.com/dembasowfr/multithread-convolution-openmp/master/output/result3.png?token=GHSAT0AAAAAACTOIUANN4YWY3QONS3MH7OIZVJOY2A)
+
+
