@@ -11,7 +11,10 @@
 ## Code structure
   * filter.hpp defines a 3-D convolutinal kernel class with a bias term. It contains some helper functions to allocate memory to tensors and to normalize them.
   * Convolution.hpp defines a convolutional layer. One can set the stride and zero-padding of the filter in this. Also, dimensions of the output layer are calculated automatically.
-  * conv2d method takes as argument a 3-D data volume and a list of filters (one filter generates one activation map). For example, applying a 3 x 3 x 3 filter on a 300 x 300 x 3 image (with 1 zero padding and 1 stride) will generate an 2-D output layer of 300 x 300. 
+  * conv2d method takes as argument a 3-D data volume and a list of filters (one filter generates one activation map). 
+  
+  For example, applying a 5 x 5 x 3 filter on a 300 x 300 x 3 image (with 1 zero padding and 1 stride) will generate an 2-D output layer of 300 x 300. 
+  
   * List of filters would make the output layer. Shape of output layer as well as the data block is returned by the function conv2d.
 
   * main.cpp runs some example filters on a batch of 3 images. It generates 3 filters, one as an edge detector for each color channel (see push\_filter). Then defines
