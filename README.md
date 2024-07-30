@@ -3,7 +3,7 @@
 ![Overview Input Output Image](https://raw.githubusercontent.com/dembasowfr/multithread-convolution-openmp/master/output/result1.png?token=GHSAT0AAAAAACTOIUANY4C2JWT3REKKHPICZVJOXRA)
 
 ## Introduction
-This project is a simple multi-thread convolutional filter for images. It reads a batch of images from a file, applies a filter to each image, and writes the output to a different file. The filter is defined in a text file. The program uses OpenMP to parallelize the convolutional layer. Here we use a 5x5 filter with 1/273 normalization factor. The filter is applied to each color channel of the image. 5 threads are used to parallelize the convolutional layer and each thread processes a different color channel of the image.  The stride(which is 1) and zero-padding of the filter can be set in the convolutional layer. The output layer dimensions are calculated automatically. 
+This project is a simple multi-thread convolutional filter for images. It reads a batch of images from a file, applies a filter to each image, and writes the output to a different file. The filter is defined in a text file. The program uses OpenMP to parallelize the convolutional layer. Here we use a 5x5 filter with 1/273 normalization factor. The filter is applied to each color channel of the image. 5 threads are used to parallelize the convolutional layer which the stride(which is 1) and zero-padding of the filter can be set in the convolutional layer. The output layer dimensions are calculated automatically. 
 
 Note: The program can only run on a linux machine, as it uses OpenMP for parallelization and windows does not support the compiler.
 
