@@ -15,18 +15,21 @@ class Filter {
 
     // Constructors
     Filter(int _window, int _depth);
-    Filter(double ***_w, int _window, int _depth, int _b = 0); // constructor with kernel matrix and bias term
 
-    // Destructor
-    ~Filter();
+    // constructor with kernel matrix and bias term
+    Filter(double ***_w, int _window, int _depth, int _b = 0);
+
 
     // normalize the tensor
     void normalize();
 
 
-    // normalize kernel matrix
-    void normalize_kernel();
+    // Destructor
+    ~Filter();
+
     
+
+
 };
 
 #endif

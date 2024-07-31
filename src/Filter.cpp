@@ -2,18 +2,19 @@
  
 // allocate memory for a tensor
 
-// Explanation of the function get_tensor:
-// This function takes in three integers x, y, and z, and returns a 3D tensor of size x*y*z.
-// The tensor is a 3D array of doubles, and is allocated on the heap.
-// The function first allocates memory for an array of pointers to pointers to pointers of doubles.
-// Then, it allocates memory for each row of the tensor, which is an array of pointers to pointers of doubles.
-// Finally, it allocates memory for each element of the tensor, which is an array of doubles.
-// The function returns the 3D tensor.
 
-// What does tensor mean?
-// A tensor is a generalization of scalars, vectors, and matrices to higher dimensions.
-// In this case, the tensor is a 3D array of doubles, which is used to store the weights of the filter.
+/*
+This function takes in three integers x, y, and z, and returns a 3D tensor of size x*y*z.
+The tensor is a 3D array of doubles, and is allocated on the heap.
+The function first allocates memory for an array of pointers to pointers to pointers of doubles.
+Then, it allocates memory for each row of the tensor, which is an array of pointers to pointers of doubles.
+Finally, it allocates memory for each element of the tensor, which is an array of doubles.
+The function returns the 3D tensor.
 
+What does tensor mean?
+A tensor is a generalization of scalars, vectors, and matrices to higher dimensions.
+In this case, the tensor is a 3D array of doubles, which is used to store the weights of the filter.
+*/
 
 double ***get_tensor(int x, int y, int z) {
   double ***ret = new double**[x];
@@ -32,6 +33,7 @@ Filter::Filter(int _window, int _depth) : window(_window), depth(_depth) {
 }
 
 // Constructor with initial weights
+// This constructor takes in a 3D tensor _w, representing the kernel matrix, and initializes the filter with these weights.
 Filter::Filter(double ***_w, int _window, int _depth, int _b) : window(_window), depth(_depth), b(_b) {
   w = get_tensor(window, window, depth); 
   for (int i = 0; i < window; ++i) {
@@ -43,16 +45,6 @@ Filter::Filter(double ***_w, int _window, int _depth, int _b) : window(_window),
   }
 }
 
-// Destructor
-Filter::~Filter() {
-  for (int i = 0; i < window; ++i) {
-    for (int j = 0; j < window; ++j) {
-      delete[] w[i][j];
-    }
-    delete[] w[i];
-  }
-  delete[] w;
-}
 
 // normalize the tensor - kernel (normalization factor = sum of absolute values of all elements): 273 in our case
 void Filter::normalize() {
@@ -72,4 +64,17 @@ void Filter::normalize() {
       }
     }
   }
+}
+
+
+
+// Destructor - deallocate memory
+Filter::~Filter() {
+  for (int i = 0; i < window; ++i) {
+    for (int j = 0; j < window; ++j) {
+      delete[] w[i][j];
+    }
+    delete[] w[i];
+  }
+  delete[] w;
 }

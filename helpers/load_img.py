@@ -28,6 +28,6 @@ if __name__ == "__main__":
 
         result = Image.fromarray(im.astype(np.uint8))
 
-        result.save(sys.argv[2] + "/" + str(idx) + ".bmp")
+        result.save(sys.argv[2] + "/" + "result"+str(idx) + ".bmp")
         
         f.readline()    # empty line

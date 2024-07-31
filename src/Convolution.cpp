@@ -2,6 +2,8 @@
 #include <cassert>
 #include <algorithm>
 
+
+
 // Constructor
 Convolution::Convolution(int _width, int _height, int _depth, int _window, int _stride, int _padding, int n_filters)
   : in_width(_width), 
@@ -18,27 +20,31 @@ Convolution::Convolution(int _width, int _height, int _depth, int _window, int _
   out_depth = n_filters;
 }
 
-// Destructor
-Convolution::~Convolution() {}
 
 // Applies convolutional filters in filters to input volume x
 // x treated as in_width * in_height * in_depth 
 // assumed n_filters elements in filters vector
 // returns shape of the output volume and pointer to the memory block
+
 std::tuple<int, int, int, double ***> Convolution::conv2d(double ***x, const std::vector<Filter*> &filters) {
 
   double ***y = get_tensor(out_width, out_height, out_depth);
+
+  // check if the number of filters is correct
   assert(filters.size() == n_filters);
 
 
   for (int k = 0; k < n_filters; ++k) {     // k_th activation map
       
     for (int i = 0; i < out_width; ++i) {
+      
       for (int j = 0; j < out_height; ++j) {
+
         // fill y[i][j] with kernel computation filters[k]->x + b 
         // compute boundaries inside original matrix after padding
         int i_start = -padding + i*stride,  
             j_start = -padding + j*stride;
+
         int i_end = i_start + window,
             j_end = j_start + window;
 
@@ -49,10 +55,17 @@ std::tuple<int, int, int, double ***> Convolution::conv2d(double ***x, const std
             }
           }
         }
-        y[i][j][k] += filters[k]->b;  // bias term
+
+        // add bias term to the output
+        y[i][j][k] += filters[k]->b;
       }
     }
   }
     
+  
   return std::make_tuple(out_width, out_height, out_depth, y);
 }
+
+
+// Destructor
+Convolution::~Convolution() {}
