@@ -1,6 +1,6 @@
 # Convolutional filter(s) for images
 
-![Overview Input Output Image](https://raw.githubusercontent.com/dembasowfr/multithread-convolution-openmp/master/output/result1.png?token=GHSAT0AAAAAACTOIUANY4C2JWT3REKKHPICZVJOXRA)
+![Overview Input Output Image](./output/result1.png)
 
 ## Introduction
 This project is a simple multi-thread convolutional filter for images. It reads a batch of images from a file, applies a filter to each image, and writes the output to a different file. The filter is defined in a text file. The program uses OpenMP to parallelize the convolutional layer. Here we use a 5x5 filter with 1/273 normalization factor. The filter is applied to each color channel of the image. 5 threads are used to parallelize the convolutional layer which the stride(which is 1) and zero-padding of the filter can be set in the convolutional layer. The output layer dimensions are calculated automatically. 
@@ -13,12 +13,14 @@ Note: The program can only run on a linux machine, as it uses OpenMP for paralle
 PIL was preferred over other C++ libraries due to ease of use.
 
 ## Code structure
-** Helpers: **
+### Helpers:
   * make\_mats.py:
   This script converts images into a matrix format(matrices) and saves the data to a file.
   * load\_img.py:
   This script reads image data from a file(matrices), reconstructs the images, and saves them as BMP files. The images are stored in a file.
-  ** Source: **
+
+
+  ### Source:
   * Filter.hpp: 
   Defines a 3-D convolutinal kernel class with a bias term. It contains some helper functions to allocate memory to tensors and to normalize them.
   * Convolution.hpp: 
@@ -102,8 +104,8 @@ The output images are stored in out_mats inside output directory.
 
 Check out a couple of images with the filters applied:
 
-![Output Image 1](https://raw.githubusercontent.com/dembasowfr/multithread-convolution-openmp/master/output/result2.png?token=GHSAT0AAAAAACTOIUAN43TXBBX7WU536R72ZVJOYQQ)
+![Output Image 1](./output/result2.png)
 
-![Output Image 2](https://raw.githubusercontent.com/dembasowfr/multithread-convolution-openmp/master/output/result3.png?token=GHSAT0AAAAAACTOIUANN4YWY3QONS3MH7OIZVJOY2A)
+![Output Image 2](./output/result3.png)
 
 
