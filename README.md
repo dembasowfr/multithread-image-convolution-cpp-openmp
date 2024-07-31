@@ -22,7 +22,10 @@ PIL was preferred over other C++ libraries due to ease of use.
 
   ### Source:
   * Filter.hpp: 
-  Defines a 3-D convolutinal kernel class with a bias term. It contains some helper functions to allocate memory to tensors and to normalize them.
+  Defines a 3-D convolutinal kernel class with a bias term. The class contains a method to apply the filter to a 3-D data block.
+  It contains some helper functions to allocate memory to tensors and to normalize them.
+  - get\_tensor: This function dynamically allocates a 3D array (tensor) to store filter weights.
+  - normalize: This function normalizes the filter weights by dividing each element by the sum of all elements.
   * Convolution.hpp: 
   Defines a convolutional layer. One can set the stride and zero-padding of the filter in this. Also, dimensions of the output layer are calculated automatically.
   * conv2d method takes as argument a 3-D data volume and a list of filters (one filter generates one activation map). 

@@ -54,7 +54,7 @@ Filter::~Filter() {
   delete[] w;
 }
 
-// normalize the tensor
+// normalize the tensor - kernel (normalization factor = sum of absolute values of all elements): 273 in our case
 void Filter::normalize() {
   double sum = 0;
   for (int i = 0; i < window; ++i) {

@@ -22,6 +22,11 @@ class Filter {
 
     // normalize the tensor
     void normalize();
+
+
+    // normalize kernel matrix
+    void normalize_kernel();
+    
 };
 
 #endif
