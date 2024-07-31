@@ -13,6 +13,12 @@ Note: The program can only run on a linux machine, as it uses OpenMP for paralle
 PIL was preferred over other C++ libraries due to ease of use.
 
 ## Code structure
+** Helpers: **
+  * make\_mats.py:
+  This script converts images into a matrix format(matrices) and saves the data to a file.
+  * load\_img.py:
+  This script reads image data from a file(matrices), reconstructs the images, and saves them as BMP files. The images are stored in a file.
+  ** Source: **
   * Filter.hpp: 
   Defines a 3-D convolutinal kernel class with a bias term. It contains some helper functions to allocate memory to tensors and to normalize them.
   * Convolution.hpp: 

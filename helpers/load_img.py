@@ -1,5 +1,8 @@
 #!/usr/bin/python
+'''
+This script reads the matrix format and converts it back to images using the PIL library.
 
+'''
 from PIL import Image
 import pylab
 import sys
@@ -20,7 +23,6 @@ if __name__ == "__main__":
         # Get the image shape and create an empty image
         im = np.empty(shape=(shape[1], shape[2], shape[3]))
 
-        # Read the image
         for i in range(shape[1]):
             
             row = f.readline().split()
